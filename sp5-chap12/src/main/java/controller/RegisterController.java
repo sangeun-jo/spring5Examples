@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import spring.DuplicateMemberException;
 import spring.MemberRegisterService;
 import spring.RegisterRequest;
+import spring.WrongIdPasswordException;
 
 @Controller 
 public class RegisterController {
@@ -47,7 +48,7 @@ public class RegisterController {
 	
 	@PostMapping("/register/step3")
 	public String handleStep3(@Valid RegisterRequest regReq, Errors errors) {
-		//new RegisterRequestValidator().validate(regReq, errors);
+		new RegisterRequestValidator().validate(regReq, errors);
 		if(errors.hasErrors())
 			return "register/step2"; 
 		try {
@@ -56,12 +57,13 @@ public class RegisterController {
 		} catch (DuplicateMemberException e) {
 			errors.rejectValue("email", "duplicate");  
 			return "register/step2"; 
-		}
+		} 
 	}
 	
+	/*
 	@InitBinder //컨트롤러 범위 Validator 
 	protected void initBinder(WebDataBinder binder) {
 		binder.setValidator(new RegisterRequestValidator()); // 대상 컨트롤러 
 	}
-
+	*/
 }

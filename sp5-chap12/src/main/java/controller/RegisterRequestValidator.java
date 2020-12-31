@@ -29,6 +29,7 @@ public class RegisterRequestValidator implements Validator {
 	@Override // target: 검사할 객체, errors: 검사 결과 에러코드 설정하기 위한 변수 
 	public void validate(Object target, Errors errors) {
 		RegisterRequest regReq = (RegisterRequest) target; 
+		
 		if(regReq.getEmail() == null || regReq.getEmail().trim().isEmpty()) { // 이메일이 입력 안되있으면 
 			errors.rejectValue("email", "required"); // 에러코드로 required 설정 
 		} else { 
