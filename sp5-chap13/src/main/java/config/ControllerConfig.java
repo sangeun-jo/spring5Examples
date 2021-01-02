@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import controller.ChangePwdController;
 import controller.LoginController;
 import controller.LogoutController;
 import controller.RegisterController;
 import spring.AuthService;
+import spring.ChangePasswordService;
 import spring.MemberRegisterService;
 import survey.SurveyController; 
 
@@ -18,6 +20,8 @@ public class ControllerConfig {
 	private MemberRegisterService memberRegSvc; //ControllerConfig에서 memberRegSvc 가 필요할 때마다 알아서 객체 생성함.  
 	@Autowired
 	private AuthService authService; 
+	@Autowired
+	private ChangePasswordService changePasswordService; 
 	
 	@Bean
 	public RegisterController registerController() {
@@ -27,7 +31,7 @@ public class ControllerConfig {
 	}
 	
 	@Bean
-	public LoginController loginContrller() {
+	public LoginController loginController() {
 		LoginController controller = new LoginController(); 
 		controller.setAuthService(authService);
 		return controller; 
@@ -41,6 +45,13 @@ public class ControllerConfig {
 	@Bean
 	public SurveyController surveyController() {  
 		return new SurveyController(); 
+	}
+	
+	@Bean
+	public ChangePwdController changePwdController() {
+		ChangePwdController controller = new ChangePwdController(); 
+		controller.setChangePasswordService(changePasswordService);
+		return controller; 
 	}
 
 }
