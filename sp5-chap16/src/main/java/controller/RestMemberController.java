@@ -29,7 +29,7 @@ public class RestMemberController {
 	public List<Member> members(){
 		return memberDao.selectAll(); 
 	}
-	/*
+	
 	@PostMapping("/api/members")
 	public void newMember(
 			@RequestBody @Valid RegisterRequest regReq, 
@@ -43,8 +43,8 @@ public class RestMemberController {
 				}
 			}
 	
-	*/
 	
+	/*
 	@PostMapping("/api/members")
 	public void newMember(@RequestBody @Valid RegisterRequest regReq, HttpServletResponse response) throws IOException {
 		try {
@@ -54,7 +54,8 @@ public class RestMemberController {
 		} catch (DuplicateMemberException dupEx) {
 			response.sendError(HttpStatus.NOT_FOUND.value());
 		}
-	}
+	}*/
+	
 
 	
 	@GetMapping("/api/members/{id}")

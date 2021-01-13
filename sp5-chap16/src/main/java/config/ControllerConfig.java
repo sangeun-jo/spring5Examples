@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import controller.ChangePwdController;
 import controller.LoginController;
 import controller.LogoutController;
+import controller.MemberDetailController;
 import controller.MemberListController;
 import controller.RegisterController;
 import controller.RestMemberController;

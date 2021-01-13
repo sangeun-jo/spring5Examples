@@ -1,4 +1,4 @@
-package config;
+package controller;
 
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.stereotype.Controller;
